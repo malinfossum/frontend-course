@@ -33,3 +33,11 @@ updates:
       npm-minor-patch:
         patterns: ["*"]
         update-types: [minor, patch]
+    # typescript-eslint stops on TS 7.0 and plans support from TS 7.1
+    # (typescript-eslint/typescript-eslint#10940). Skip 7.0.x so the next
+    # TypeScript PR is 7.1. If that one is still red, typescript-eslint may
+    # need TS 7 side by side with TS 6 instead of a plain bump. Drop this
+    # block once TypeScript 7 is merged.
+    ignore:
+      - dependency-name: typescript
+        versions: [">=7.0.0 <7.1.0"]
