@@ -34,9 +34,11 @@ updates:
         patterns: ["*"]
         update-types: [minor, patch]
     # typescript-eslint stops on TS 7.0 and plans support from TS 7.1
-    # (typescript-eslint/typescript-eslint#10940). Skip 7.0.x so the next
-    # TypeScript PR is 7.1. If that one is still red, typescript-eslint may
-    # need TS 7 side by side with TS 6 instead of a plain bump. Drop this
+    # (typescript-eslint/typescript-eslint#10940). vue-tsc breaks on TS 7.0
+    # too: it loads typescript/lib/tsc, which TS 7.0 no longer exports, so
+    # type-check and build fail. Skip 7.0.x so the next TypeScript PR is 7.1.
+    # If that one is still red, check both tools: typescript-eslint may need
+    # TS 7 side by side with TS 6 instead of a plain bump. Drop this
     # block once TypeScript 7 is merged.
     ignore:
       - dependency-name: typescript
